@@ -28,8 +28,6 @@ Pulls down the docker image and creates the Kubernetes service and replication c
 		"fmt"
 		"io/ioutil"
 		"net/http"
-
-		"github.com/gin-gonic/gin"
 	)
 
 	// ServiceUrl is the url that hosts the wkhtmltopdf service
@@ -77,11 +75,11 @@ Pulls down the docker image and creates the Kubernetes service and replication c
 	}
 
 	// Serve serves the pdf to the browser
-	func Serve(ctx *gin.Context, filename string, pdf []byte) {
-		ctx.Writer.Header().Set("Content-Type", "applicaiton/pdf")
-		ctx.Writer.Header().Set("Content-Disposition", "attachment; filename="+filename)
+	func Serve(w http.ResponseWriter, filename string, pdf []byte) {
+		w.Header().Set("Content-Type", "applicaiton/pdf")
+		w.Header().Set("Content-Disposition", "attachment; filename="+filename)
 
-		ctx.Writer.Write(pdf)
+		w.Write(pdf)
 	}
 
 ```
