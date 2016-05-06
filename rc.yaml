@@ -1,0 +1,22 @@
+apiVersion: v1
+
+kind: ReplicationController
+
+metadata:
+  name: pdf-service
+
+spec:
+  replicas: 1
+  selector:
+    app: pdf-service
+  template:
+    metadata:
+      labels:
+        app: pdf-service
+    spec:
+      containers:
+      - name: pdf-service
+        image: us.gcr.io/[replace with project id]/pdf-service:v1
+        ports:
+        - name: http
+          containerPort: 80
