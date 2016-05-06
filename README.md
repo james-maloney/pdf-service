@@ -1,4 +1,4 @@
-# wkhtmltopdf kubernetes setup template
+# wkhtmltopdf kubernetes service template
 
 Template used to setup wkhtmltopdf as a Kubernetes service. The service defaults to internal use only.
 
